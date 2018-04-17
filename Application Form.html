@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Application form | Bizana Senior Secondary School</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="..\CSS\Application Form.css">
+    <script src="..\JS\Application Form.js"></script>
+</head>
+<body onload="x('name')">
+    <form onsubmit="return false">
+        <progress id="completion" value="0" max="100"></progress>
+        <h4 id="caption">Personal Detials</h4>
+        <div id="personalDetials">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="fname" id="name" placeholder="First Name" onblur="validateNameOrSur('error_name', 'name')"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label id="error_name"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="sur" id="sur" placeholder="Surname" onblur="validateNameOrSur('error_sur', 'sur')"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label id="error_sur"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="id_no" id="id_no" placeholder="ID Number" maxlength="13" onblur="validatesID()"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label id="error_id_no"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="DoB" id="DoB" placeholder="Date of Birth" readonly/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="gender" id="gender" placeholder="Gender" readonly/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="citizenship" id="citizenship" placeholder="Citizenship" readonly/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <select name="race" id="race">
+                            <option value="None">-Select Race-</option>
+                            <option value="African">African</option>
+                            <option value="Asian">Asian</option>
+                            <option value="Coloured">Coloured</option>
+                            <option value="White">White</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="id_copy">Attach ID copy:</label>
+                    </td>
+                    <td>
+                        <input type="file" name="id_copy" id="id_copy" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button onclick="showContactDetials()">Continue</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="contactDetials">
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" name="cell" id="cell" placeholder="Cellphone number" maxlength="10" onblur="validatesCell()" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label id="error_cell"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="email" id="email" name="email" placeholder="Email e.g: you@example.com" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="Continue" onclick="showPrevSchool()">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="prevSchool">
+            <table>
+                 <tr>
+                    <td colspan="2">
+                        <input type="text" name="grade_applying" id="grade_applying" placeholder="Grade applying for">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label id="grad_applying_error"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="prevSchool" id="previousSchool" placeholder="Previous school name"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="prevSchool_error"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" id="grade_passed" name="grade_passed" placeholder="Highest passed">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="grade_passed"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="report">Attach progress report:</label>
+                    </td>
+                    <td>
+                        <input type="file" name="report" id="report"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" value="Continue" onclick="overview()">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="overview">
+            <table>
+                <tr>
+                    <td>
+                        <label id="personal_details"><h4>Personal Information</h4></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="name_res">First Name(s):</label>
+                    </td>
+                    <td>
+                        <label id="name_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sur_res">Surname:</label>
+                    </td>
+                    <td>
+                        <label id="sur_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="id_no">ID Number:</label>
+                    </td>
+                    <td>
+                        <label id="id_no_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="DoB_res">Date of Birth:</label>
+                    </td>
+                    <td>
+                        <label id="DoB_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="gender_res">Gender:</label>
+                    </td>
+                    <td>
+                        <label id="gender_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Citizenship:</label>
+                    </td>
+                    <td>
+                        <label id="citizenship_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="race_res">Race:</label>
+                    </td>
+                    <td>
+                        <label id="race_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label id="contact_detials"><h4>Contact Detials</h4></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cell_res">Cellphone number:</label>
+                    </td>
+                    <td>
+                        <label id="cell_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email_res">Emial address:</label>
+                    </td>
+                    <td>
+                        <label id="email_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sec_prev_School"><h4>Previou School Information</h4></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="grade_applying">Grade applying for:</label>
+                    </td>
+                    <td>
+                        <label id="grade_applying_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="prevSchool_res">Previous school name:</label>
+                    </td>
+                    <td>
+                        <label id="prevSchool_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="grade_passed_res">Highest grade passed:</label>
+                    </td>
+                    <td>
+                        <label id="grade_passed_res"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="showPersonalInfo()" id="fix">Fix Errors</button>
+                    </td>
+                    <td>
+                        <input type="submit" value="Submit"/>
+                    </td>
+                </tr>
+            </table>
+        </div> 
+    </form>
+</body>
+</html>
